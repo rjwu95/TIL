@@ -45,3 +45,7 @@ const TabNavigator = createBottomTabNavigator({
 ```
 
 createBottomTabNavigator를 할 때 navigationOptions의 tabBarIcon의 값을 주면 image를 tab에 넣을 수 있다.
+
+
+
+**git push upstream master:feature 로 하면 내 마스터를 upstream의 feature로 푸쉬한다.**
