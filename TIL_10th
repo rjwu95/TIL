@@ -1,0 +1,65 @@
+#### 페이지를 스와이프와 애니메이션을 이용해서 라우터를 이동시키는 모듈. react-native-tab-view
+
+사용방법은 아래와 같다.
+
+```javascript
+import React, { Component } from 'react';
+import { View, StyleSheet, Dimensions } from 'react-native';
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
+
+const FirstRoute = () => (
+  <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />
+);
+const SecondRoute = () => (
+  <View style={[styles.scene, { backgroundColor: '#673ab7' }]} />
+);
+
+export default class Test extends Component {
+  state = {
+    index: 0,
+    routes: [
+      { key: 'first', title: 'First' },
+      { key: 'second', title: 'Second' }
+    ]
+  };
+
+  render() {
+    return (
+      <TabView
+        navigationState={this.state}
+        renderScene={SceneMap({
+          first: FirstRoute,
+          second: SecondRoute
+        })}
+        // animationEnabled={false}
+        // swipeEnabled={false}
+        onIndexChange={index => this.setState({ index })}
+        initialLayout={{ height: 70, width: 70 }}
+      />
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  scene: {
+    flex: 1
+  }
+});
+```
+
+back-end도 api가 어느 곳, 어떤 화면에 어떻게 나올 것인지 머릿 속에 그림이 다 그려져있어야 함.
+(server는 최대한 있는 그대로의 data를 주도록 하고 client side에서 data를 정제해서 출력해줘야 함.)
+이번에 우리가 만든 프로젝트에서 한식을 누르면 모든 식당의 정보를 다 가져오는데 불필요한 데이터를 한번에 다들고 올 필요가 없다. 특히나 리뷰를 한번에 들고 올 필요는 없음
+
+token통신은 이번에 준비를 너무 늦게했는데, 다음부터는 일찍 시작하면 더 좋을 것 같음.
+
+블로그 내용별로 정리
+1. 우리가 같이 한 서비스에 대한 소개
+2. 
+
+
+modules가 점점 많아지면 utility 와 service처럼 나눌수 있음
+
+config에 server-address를 빼놓는게 훨씬 좋다.
+config에 세단계로 나눠서 서버 주소를 바꿔
+
